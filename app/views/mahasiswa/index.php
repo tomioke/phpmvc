@@ -16,9 +16,10 @@
             <!-- Hanya menampilkan nama -->
             <ul class="list-group">
                 <?php foreach( $data['mhs'] as $mhs ) : ?> 
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <li class="list-group-item">
                     <?php echo $mhs['nama']; ?>
-                    <a href="<?php echo BASEURL; ?>/mahasiswa/detail/<?php echo $mhs['id']; ?> "class="badge badge-pill badge-info">detail</a>
+                    <a href="<?php echo BASEURL; ?>/mahasiswa/hapus/<?php echo $mhs['id']; ?> "class="badge badge-pill badge-danger float-right ml-2" onclick="sweet()">hapus</a>
+                    <a href="<?php echo BASEURL; ?>/mahasiswa/detail/<?php echo $mhs['id']; ?> "class="badge badge-pill badge-info float-right ml-2">detail</a>
                     </li>
                 <?php endforeach; ?>
             </ul>
@@ -71,3 +72,9 @@
     </div>
   </div>
 </div>
+
+<script>
+  function sweet() {
+    return confirm('Yakin anda mau hapus?');
+  }
+</script>
