@@ -75,6 +75,11 @@ class Database {
         return $this->stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    // Menghitung berapa baris yang baru berubah
+    public function rowCount() {
+        return $this->stmt->rowCount();
+    } 
+
 
 
 }
