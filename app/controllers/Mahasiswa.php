@@ -33,7 +33,47 @@ class Mahasiswa extends Controller {
             header('Location: ' . BASEURL . '/mahasiswa');
             exit;
         }
-
-        
     }
+
+    public function hapus($id) {
+        // Membuat halaman hapus data mahasiswa
+        if( $this->model('Mahasiswa_model')->hapusDataMahasiswa($id) > 0 ) {
+            // Menjalankan flasher
+            Flasher::setFlash(' Berhasil', 'dihapus', 'success');
+            // arahkan ke halaman mahasiswa
+            header('Location: ' . BASEURL . '/mahasiswa');
+            exit;
+        }else {
+            // Jika gagal maka,
+            // Menjalankan flasher
+            Flasher::setFlash(' Gagal', 'dihapus', 'danger');
+            // arahkan ke halaman mahasiswa
+            header('Location: ' . BASEURL . '/mahasiswa');
+            exit;
+        }   
+    }
+
+    public function getubah() {
+        // Meminta data mahasiswa
+        echo json_encode( $this->model('Mahasiswa_model')->getMahasiswaById($_POST['id']) );
+    }
+
+    public function ubah() {
+        // Membuat halaman ubah data mahasiswa
+        if( $this->model('Mahasiswa_model')->ubahDataMahasiswa($_POST) > 0 ) {
+            // Menjalankan flasher
+            Flasher::setFlash(' Berhasil', 'diubah', 'success');
+            // arahkan ke halaman mahasiswa
+            header('Location: ' . BASEURL . '/mahasiswa');
+            exit;
+        }else {
+            // Jika gagal maka,
+            // Menjalankan flasher
+            Flasher::setFlash(' Gagal', 'diubah', 'danger');
+            // arahkan ke halaman mahasiswa
+            header('Location: ' . BASEURL . '/mahasiswa');
+            exit;
+        }
+    }
+
 }
